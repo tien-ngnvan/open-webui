@@ -1,0 +1,467 @@
+{
+	"patches": [
+		{
+			"id": "frontend-app-name",
+			"file": "src/lib/constants.ts",
+			"find": "export const APP_NAME = 'Open WebUI';",
+			"replace": "export const APP_NAME = '{{name}}';",
+			"count": 1
+		},
+		{
+			"id": "app-html-title",
+			"file": "src/app.html",
+			"find": "<title>Open WebUI</title>",
+			"replace": "<title>{{name}}</title>",
+			"count": 1
+		},
+		{
+			"id": "app-html-theme-color-meta",
+			"file": "src/app.html",
+			"find": "<meta name=\"theme-color\" content=\"#171717\" />",
+			"replace": "<meta name=\"theme-color\" content=\"{{themeColorDark}}\" />",
+			"count": 1,
+			"flag": "patchThemeColor"
+		},
+		{
+			"id": "app-html-theme-color-dark",
+			"file": "src/app.html",
+			"find": "metaThemeColorTag.setAttribute('content', '#171717');",
+			"replace": "metaThemeColorTag.setAttribute('content', '{{themeColorDark}}');",
+			"count": 2,
+			"flag": "patchThemeColor"
+		},
+		{
+			"id": "app-html-theme-color-light",
+			"file": "src/app.html",
+			"find": "metaThemeColorTag.setAttribute('content', '#ffffff');",
+			"replace": "metaThemeColorTag.setAttribute('content', '{{themeColorLight}}');",
+			"count": 2,
+			"flag": "patchThemeColor"
+		},
+		{
+			"id": "layout-push-title-data",
+			"file": "src/routes/+layout.svelte",
+			"find": "`${data.title} / Open WebUI`,",
+			"replace": "`${data.title} / {{name}}`,",
+			"count": 1
+		},
+		{
+			"id": "layout-push-title-display",
+			"file": "src/routes/+layout.svelte",
+			"find": "`${displayTitle} / Open WebUI`,",
+			"replace": "`${displayTitle} / {{name}}`,",
+			"count": 1
+		},
+		{
+			"id": "layout-push-title-channel",
+			"file": "src/routes/+layout.svelte",
+			"find": "`${title} / Open WebUI`,",
+			"replace": "`${title} / {{name}}`,",
+			"count": 1
+		},
+		{
+			"id": "channel-title-participants",
+			"file": "src/lib/components/channel/Channel.svelte",
+			"find": "}, '')} / Open WebUI</title",
+			"replace": "}, '')} / {{name}}</title",
+			"count": 1
+		},
+		{
+			"id": "channel-title-fallback",
+			"file": "src/lib/components/channel/Channel.svelte",
+			"find": "<title>#{channel?.name ?? 'Channel'} / Open WebUI</title>",
+			"replace": "<title>#{channel?.name ?? 'Channel'} / {{name}}</title>",
+			"count": 1
+		},
+		{
+			"id": "encrypted-channel-title",
+			"file": "src/routes/(app)/channels/[id]/encrypted/+page.svelte",
+			"find": "<svelte:head><title>{$i18n.t('Encrypted chat')} · Open WebUI</title></svelte:head>",
+			"replace": "<svelte:head><title>{$i18n.t('Encrypted chat')} · {{name}}</title></svelte:head>",
+			"count": 1
+		},
+		{
+			"id": "onboarding-wordmark",
+			"file": "src/lib/components/OnBoarding.svelte",
+			"find": "\n\t\t\t\t\t\tOpen WebUI\n\t\t\t\t\t</div>",
+			"replace": "\n\t\t\t\t\t\t{{name}}\n\t\t\t\t\t</div>",
+			"count": 1
+		},
+		{
+			"id": "mcp-client-identity",
+			"file": "src/lib/components/chat/Messages/MCPApp.svelte",
+			"find": "{ name: 'Open WebUI', version: WEBUI_VERSION },",
+			"replace": "{ name: '{{name}}', version: WEBUI_VERSION },",
+			"count": 1
+		},
+		{
+			"id": "package-json-name",
+			"file": "package.json",
+			"find": "\"name\": \"open-webui\",",
+			"replace": "\"name\": \"{{slug}}\",",
+			"count": 1
+		},
+		{
+			"id": "backend-webui-name-default",
+			"file": "backend/open_webui/env.py",
+			"find": "WEBUI_NAME = os.getenv('WEBUI_NAME', 'Open WebUI')\nif WEBUI_NAME != 'Open WebUI':\n    WEBUI_NAME += ' (Open WebUI)'",
+			"replace": "WEBUI_NAME = os.getenv('WEBUI_NAME', '{{name}}')",
+			"count": 1
+		},
+		{
+			"id": "backend-fastapi-title",
+			"file": "backend/open_webui/main.py",
+			"find": "    title='Open WebUI',",
+			"replace": "    title='{{name}}',",
+			"count": 1
+		},
+		{
+			"id": "backend-startup-banner",
+			"file": "backend/open_webui/main.py",
+			"find": "print(f'Open WebUI v{VERSION} - building the best AI user interface.\\nhttps://github.com/open-webui/open-webui')",
+			"replace": "print(f'{{name}} v{VERSION} - building the best AI user interface.\\n{{website}}')",
+			"count": 1,
+			"flag": "patchAsciiBannerFallback"
+		},
+		{
+			"id": "backend-connection-error-constant",
+			"file": "backend/open_webui/constants.py",
+			"find": "SERVER_CONNECTION_ERROR = 'Open WebUI: Server Connection Error'",
+			"replace": "SERVER_CONNECTION_ERROR = '{{name}}: Server Connection Error'",
+			"count": 1
+		},
+		{
+			"id": "backend-audio-connection-errors",
+			"file": "backend/open_webui/routers/audio/__init__.py",
+			"find": "'Open WebUI: Server Connection Error'",
+			"replace": "'{{name}}: Server Connection Error'",
+			"count": 5
+		},
+		{
+			"id": "backend-openai-connection-errors",
+			"file": "backend/open_webui/routers/openai.py",
+			"find": "'Open WebUI: Server Connection Error'",
+			"replace": "'{{name}}: Server Connection Error'",
+			"count": 3
+		},
+		{
+			"id": "backend-channel-push-title",
+			"file": "backend/open_webui/routers/channels.py",
+			"find": "f'{channel.name} / Open WebUI',",
+			"replace": "f'{channel.name} / {{name}}',",
+			"count": 1
+		},
+		{
+			"id": "backend-notification-test-app-name",
+			"file": "backend/open_webui/utils/notifications.py",
+			"find": "app_name: str = 'Open WebUI') -> dict[str, Any]:",
+			"replace": "app_name: str = '{{name}}') -> dict[str, Any]:",
+			"count": 1
+		},
+		{
+			"id": "backend-notification-test-body",
+			"file": "backend/open_webui/utils/notifications.py",
+			"find": "'This is a test notification from Open WebUI.',",
+			"replace": "'This is a test notification from {{name}}.',",
+			"count": 1
+		},
+		{
+			"id": "backend-notification-push-app-name",
+			"file": "backend/open_webui/utils/notifications.py",
+			"find": "    app_name: str = 'Open WebUI',",
+			"replace": "    app_name: str = '{{name}}',",
+			"count": 1
+		},
+		{
+			"id": "backend-notification-title-fallback",
+			"file": "backend/open_webui/utils/notifications.py",
+			"find": "title = str(data.get('title') or event.message or 'Open WebUI')",
+			"replace": "title = str(data.get('title') or event.message or '{{name}}')",
+			"count": 1
+		},
+		{
+			"id": "backend-notification-push-title",
+			"file": "backend/open_webui/utils/notifications.py",
+			"find": "await notify(data.get('user_id'), event.id, f'{title} / Open WebUI', body, path)",
+			"replace": "await notify(data.get('user_id'), event.id, f'{title} / {{name}}', body, path)",
+			"count": 1
+		},
+		{
+			"id": "backend-notification-getattr-fallback",
+			"file": "backend/open_webui/utils/notifications.py",
+			"find": "app_name = getattr(getattr(app, 'state', None), 'WEBUI_NAME', 'Open WebUI')",
+			"replace": "app_name = getattr(getattr(app, 'state', None), 'WEBUI_NAME', '{{name}}')",
+			"count": 1
+		},
+		{
+			"id": "backend-webhook-sender-name",
+			"file": "backend/open_webui/events.py",
+			"find": "name = getattr(getattr(app, 'state', None), 'WEBUI_NAME', 'Open WebUI')",
+			"replace": "name = getattr(getattr(app, 'state', None), 'WEBUI_NAME', '{{name}}')",
+			"count": 1
+		},
+		{
+			"id": "backend-notifications-router-fallback",
+			"file": "backend/open_webui/routers/notifications.py",
+			"find": "app_name = getattr(request.app.state, 'WEBUI_NAME', 'Open WebUI')",
+			"replace": "app_name = getattr(request.app.state, 'WEBUI_NAME', '{{name}}')",
+			"count": 1
+		},
+		{
+			"id": "backend-builtin-tool-fallback",
+			"file": "backend/open_webui/tools/builtin.py",
+			"find": "app_name = getattr(app_name, 'WEBUI_NAME', 'Open WebUI')",
+			"replace": "app_name = getattr(app_name, 'WEBUI_NAME', '{{name}}')",
+			"count": 1
+		},
+		{
+			"id": "backend-oauth-client-name",
+			"file": "backend/open_webui/utils/oauth.py",
+			"find": "client_name='Open WebUI',",
+			"replace": "client_name='{{name}}',",
+			"count": 1
+		},
+		{
+			"id": "backend-mfa-totp-issuer",
+			"file": "backend/open_webui/utils/mfa.py",
+			"find": "issuer_name='Open WebUI')",
+			"replace": "issuer_name='{{name}}')",
+			"count": 1
+		},
+		{
+			"id": "backend-headers-x-title",
+			"file": "backend/open_webui/utils/headers.py",
+			"find": "'X-Title': 'Open WebUI',",
+			"replace": "'X-Title': '{{name}}',",
+			"count": 1
+		},
+		{
+			"id": "backend-headers-http-referer",
+			"file": "backend/open_webui/utils/headers.py",
+			"find": "'HTTP-Referer': 'https://openwebui.com/',",
+			"replace": "'HTTP-Referer': '{{website}}',",
+			"count": 1,
+			"flag": "patchHttpReferer"
+		},
+		{
+			"id": "backend-headers-jwt-iss",
+			"file": "backend/open_webui/utils/headers.py",
+			"find": "'iss': 'open-webui',",
+			"replace": "'iss': '{{slug}}',",
+			"count": 1,
+			"flag": "patchJwtIss"
+		},
+		{
+			"id": "websearch-ua-searxng",
+			"file": "backend/open_webui/retrieval/web/searxng.py",
+			"find": "'User-Agent': 'Open WebUI (https://github.com/open-webui/open-webui) RAG Bot',",
+			"replace": "'User-Agent': '{{name}} ({{website}}) RAG Bot',",
+			"count": 1
+		},
+		{
+			"id": "websearch-ua-yacy",
+			"file": "backend/open_webui/retrieval/web/yacy.py",
+			"find": "'User-Agent': 'Open WebUI (https://github.com/open-webui/open-webui) RAG Bot',",
+			"replace": "'User-Agent': '{{name}} ({{website}}) RAG Bot',",
+			"count": 1
+		},
+		{
+			"id": "websearch-ua-external",
+			"file": "backend/open_webui/retrieval/web/external.py",
+			"find": "'User-Agent': 'Open WebUI (https://github.com/open-webui/open-webui) RAG Bot',",
+			"replace": "'User-Agent': '{{name}} ({{website}}) RAG Bot',",
+			"count": 1
+		},
+		{
+			"id": "websearch-ua-yandex",
+			"file": "backend/open_webui/retrieval/web/yandex.py",
+			"find": "'User-Agent': 'Open WebUI (https://github.com/open-webui/open-webui) RAG Bot',",
+			"replace": "'User-Agent': '{{name}} ({{website}}) RAG Bot',",
+			"count": 1
+		},
+		{
+			"id": "terminal-error-upload",
+			"file": "backend/open_webui/utils/terminals.py",
+			"find": "'File saved in Open WebUI, but upload to the selected terminal failed.'",
+			"replace": "'File saved in {{name}}, but upload to the selected terminal failed.'",
+			"count": 1
+		},
+		{
+			"id": "terminal-error-unavailable",
+			"file": "backend/open_webui/utils/terminals.py",
+			"find": "'File saved in Open WebUI, but the selected terminal is unavailable.'",
+			"replace": "'File saved in {{name}}, but the selected terminal is unavailable.'",
+			"count": 1
+		},
+		{
+			"id": "terminal-error-read",
+			"file": "backend/open_webui/utils/terminals.py",
+			"find": "'Reading files requires a terminal connection reachable by Open WebUI.'",
+			"replace": "'Reading files requires a terminal connection reachable by {{name}}.'",
+			"count": 1
+		},
+		{
+			"id": "cli-version-echo",
+			"file": "backend/open_webui/__init__.py",
+			"find": "typer.echo(f'Open WebUI version: {VERSION}')",
+			"replace": "typer.echo(f'{{name}} version: {VERSION}')",
+			"count": 1,
+			"flag": "patchCliEcho"
+		},
+		{
+			"id": "dockerfile-branding-hook",
+			"file": "Dockerfile",
+			"find": "COPY . .",
+			"replace": "COPY . .\nRUN node branding/apply-branding.mjs --apply",
+			"count": 1,
+			"unless": "apply-branding.mjs",
+			"flag": "patchDockerfileHook"
+		},
+		{
+			"id": "site-webmanifest-name",
+			"file": "static/static/site.webmanifest",
+			"find": "\"name\": \"Open WebUI\",",
+			"replace": "\"name\": \"{{name}}\",",
+			"count": 1
+		},
+		{
+			"id": "site-webmanifest-short-name",
+			"file": "static/static/site.webmanifest",
+			"find": "\"short_name\": \"WebUI\",",
+			"replace": "\"short_name\": \"{{shortName}}\",",
+			"count": 1
+		},
+		{
+			"id": "opensearch-short-name",
+			"file": "static/opensearch.xml",
+			"find": "<ShortName>Open WebUI</ShortName>",
+			"replace": "<ShortName>{{name}}</ShortName>",
+			"count": 1
+		},
+		{
+			"id": "opensearch-description",
+			"file": "static/opensearch.xml",
+			"find": "<Description>Search Open WebUI</Description>",
+			"replace": "<Description>Search {{name}}</Description>",
+			"count": 1
+		},
+		{
+			"id": "pyproject-name",
+			"file": "pyproject.toml",
+			"find": "name = \"open-webui\"",
+			"replace": "name = \"{{slug}}\"",
+			"count": 1,
+			"flag": "patchPyproject"
+		},
+		{
+			"id": "pyproject-description",
+			"file": "pyproject.toml",
+			"find": "description = \"Open WebUI\"",
+			"replace": "description = \"{{description}}\"",
+			"count": 1,
+			"flag": "patchPyproject"
+		},
+		{
+			"id": "compose-container-name",
+			"file": "docker-compose.yaml",
+			"find": "container_name: open-webui",
+			"replace": "container_name: {{slug}}",
+			"count": 1,
+			"flag": "patchDockerCompose"
+		},
+		{
+			"id": "compose-volume-name",
+			"file": "docker-compose.yaml",
+			"find": "open-webui:/app/backend/data",
+			"replace": "{{slug}}:/app/backend/data",
+			"count": 1,
+			"flag": "patchDockerCompose"
+		},
+		{
+			"id": "hatch-build-strings",
+			"file": "hatch_build.py",
+			"find": "Open Webui",
+			"replace": "{{name}}",
+			"count": 2,
+			"flag": "patchHatchBuild"
+		}
+	],
+	"assets": [
+		{
+			"src": "favicon.png",
+			"required": true,
+			"dests": [
+				"static/static/favicon.png",
+				"static/favicon.png",
+				"backend/open_webui/static/favicon.png"
+			]
+		},
+		{
+			"src": "favicon.svg",
+			"required": true,
+			"dests": ["static/static/favicon.svg", "backend/open_webui/static/favicon.svg"]
+		},
+		{
+			"src": "favicon-96x96.png",
+			"required": true,
+			"dests": ["static/static/favicon-96x96.png", "backend/open_webui/static/favicon-96x96.png"]
+		},
+		{
+			"src": "favicon.ico",
+			"required": true,
+			"dests": ["static/static/favicon.ico", "backend/open_webui/static/favicon.ico"]
+		},
+		{
+			"src": "apple-touch-icon.png",
+			"required": true,
+			"dests": ["static/static/apple-touch-icon.png", "backend/open_webui/static/apple-touch-icon.png"]
+		},
+		{
+			"src": "web-app-manifest-192x192.png",
+			"required": true,
+			"dests": [
+				"static/static/web-app-manifest-192x192.png",
+				"backend/open_webui/static/web-app-manifest-192x192.png"
+			]
+		},
+		{
+			"src": "web-app-manifest-512x512.png",
+			"required": true,
+			"dests": [
+				"static/static/web-app-manifest-512x512.png",
+				"backend/open_webui/static/web-app-manifest-512x512.png"
+			]
+		},
+		{
+			"src": "logo.png",
+			"required": true,
+			"dests": ["static/static/logo.png", "backend/open_webui/static/logo.png"]
+		},
+		{
+			"src": "splash.png",
+			"required": true,
+			"dests": ["static/static/splash.png", "backend/open_webui/static/splash.png"]
+		},
+		{
+			"src": "splash-dark.png",
+			"required": true,
+			"dests": ["static/static/splash-dark.png", "backend/open_webui/static/splash-dark.png"]
+		},
+		{
+			"src": "custom.css",
+			"required": true,
+			"dests": ["static/static/custom.css", "backend/open_webui/static/custom.css"]
+		},
+		{
+			"src": "loader.js",
+			"required": true,
+			"dests": ["static/static/loader.js", "backend/open_webui/static/loader.js"]
+		},
+		{
+			"src": "swagger-favicon.png",
+			"required": true,
+			"flag": "patchSwaggerFavicon",
+			"dests": ["backend/open_webui/static/swagger-ui/favicon.png"]
+		}
+	]
+}

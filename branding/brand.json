@@ -1,0 +1,21 @@
+{
+	"name": "Hang Tho",
+	"shortName": "Hang Tho",
+	"slug": "hang-tho",
+	"website": "https://dev.hangtho.net",
+	"description": "Hang Tho — AI chat interface",
+	"themeColorDark": "#171717",
+	"themeColorLight": "#ffffff",
+	"flags": {
+		"patchThemeColor": true,
+		"patchAsciiBannerFallback": true,
+		"patchCliEcho": true,
+		"patchDockerfileHook": true,
+		"patchSwaggerFavicon": true,
+		"patchHttpReferer": false,
+		"patchJwtIss": false,
+		"patchPyproject": false,
+		"patchDockerCompose": false,
+		"patchHatchBuild": false
+	}
+}

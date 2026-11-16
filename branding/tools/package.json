@@ -1,0 +1,12 @@
+{
+	"name": "branding-tools",
+	"private": true,
+	"type": "module",
+	"description": "One-time asset generator for the branding layer. Never installed by the app build; run manually from this directory.",
+	"scripts": {
+		"generate": "node generate-assets.mjs"
+	},
+	"devDependencies": {
+		"sharp": "^0.35.5"
+	}
+}
