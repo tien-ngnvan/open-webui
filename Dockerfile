@@ -45,6 +45,7 @@ COPY package.json package-lock.json ./
 RUN ONNXRUNTIME_NODE_INSTALL_CUDA=skip npm ci --force
 
 COPY . .
+RUN node branding/apply-branding.mjs --apply
 ENV APP_BUILD_HASH=${BUILD_HASH}
 ENV APP_BUILD_CHANNEL=${BUILD_CHANNEL}
 RUN npm run build && \
