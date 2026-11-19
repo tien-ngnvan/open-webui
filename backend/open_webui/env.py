@@ -175,13 +175,13 @@ def parse_section(section):
     return items
 
 
-try:
-    changelog_path = BASE_DIR / 'CHANGELOG.md'
-    with open(str(changelog_path.absolute()), encoding='utf8') as file:
-        changelog_content = file.read()
+changelog_content = f'''## [{VERSION}] - Hang Tho
 
-except Exception:
-    changelog_content = (pkgutil.get_data('open_webui', 'CHANGELOG.md') or b'').decode()
+### Hang Tho
+
+- Hang Tho {VERSION} - Developed by odlab-ai.
+- This build does not ship the upstream project changelog.
+'''
 
 # Convert markdown content to HTML
 html_content = markdown.markdown(changelog_content)
@@ -1193,7 +1193,7 @@ PIP_PACKAGE_INDEX_OPTIONS = os.getenv('PIP_PACKAGE_INDEX_OPTIONS', '').split()
 
 # OFFLINE_MODE
 
-ENABLE_VERSION_UPDATE_CHECK = os.getenv('ENABLE_VERSION_UPDATE_CHECK', 'true').lower() == 'true'
+ENABLE_VERSION_UPDATE_CHECK = os.getenv('ENABLE_VERSION_UPDATE_CHECK', 'false').lower() == 'true'
 OFFLINE_MODE = os.getenv('OFFLINE_MODE', 'false').lower() == 'true'
 
 if OFFLINE_MODE:

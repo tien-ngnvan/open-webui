@@ -141,24 +141,6 @@
 					{$i18n.t('license purchased by')}
 					<span class="capitalize">{$config?.license_metadata?.organization_name}</span>
 				</div>
-			{:else}
-				<div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-400 dark:text-gray-600">
-					<a
-						class="hover:text-gray-700 dark:hover:text-gray-400"
-						href="https://discord.gg/5rJgQTnV4s"
-						target="_blank">Discord</a
-					>
-					<a
-						class="hover:text-gray-700 dark:hover:text-gray-400"
-						href="https://twitter.com/OpenWebUI"
-						target="_blank">X</a
-					>
-					<a
-						class="hover:text-gray-700 dark:hover:text-gray-400"
-						href="https://github.com/open-webui/open-webui"
-						target="_blank">GitHub</a
-					>
-				</div>
 			{/if}
 
 			<div class="text-xs text-gray-400 dark:text-gray-500">
@@ -175,17 +157,12 @@
 				https://docs.openwebui.com/license. -->
 				{$i18n.t('Copyright (c)')}
 				{new Date().getFullYear()}
-				<a href="https://openwebui.com" target="_blank" class="underline">Open WebUI Inc.</a>
-				<a href="https://github.com/open-webui/open-webui/blob/main/LICENSE" target="_blank"
-					>{$i18n.t('All rights reserved.')}</a
-				>
+				Hang Tho. Developed by odlab-ai.
+				{$i18n.t('All rights reserved.')}
 			</div>
 
 			<div class="text-xs text-gray-400 dark:text-gray-500">
-				{$i18n.t('Created by')}
-				<a class="text-gray-500 dark:text-gray-400" href="https://github.com/tjbck" target="_blank"
-					>Tim J. Baek</a
-				>
+				Developed by odlab-ai
 			</div>
 		</UserSettingSection>
 	</div>

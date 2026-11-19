@@ -76,8 +76,8 @@
 		{
 			"id": "encrypted-channel-title",
 			"file": "src/routes/(app)/channels/[id]/encrypted/+page.svelte",
-			"find": "<svelte:head><title>{$i18n.t('Encrypted chat')} · Open WebUI</title></svelte:head>",
-			"replace": "<svelte:head><title>{$i18n.t('Encrypted chat')} · {{name}}</title></svelte:head>",
+			"find": "<svelte:head><title>{$i18n.t('Encrypted chat')} \u00b7 Open WebUI</title></svelte:head>",
+			"replace": "<svelte:head><title>{$i18n.t('Encrypted chat')} \u00b7 {{name}}</title></svelte:head>",
 			"count": 1
 		},
 		{
@@ -384,6 +384,432 @@
 			"replace": "{{name}}",
 			"count": 2,
 			"flag": "patchHatchBuild"
+		},
+		{
+			"id": "i18n-sweep-en-US",
+			"file": "src/lib/i18n/locales/en-US/translation.json",
+			"find": "Open WebUI",
+			"replace": "{{name}}"
+		},
+		{
+			"id": "i18n-sweep-vi-VN",
+			"file": "src/lib/i18n/locales/vi-VN/translation.json",
+			"find": "Open WebUI",
+			"replace": "{{name}}"
+		},
+		{
+			"id": "i18n-sweep-zh-CN",
+			"file": "src/lib/i18n/locales/zh-CN/translation.json",
+			"find": "Open WebUI",
+			"replace": "{{name}}"
+		},
+		{
+			"id": "i18n-sweep-zh-TW",
+			"file": "src/lib/i18n/locales/zh-TW/translation.json",
+			"find": "Open WebUI",
+			"replace": "{{name}}"
+		},
+		{
+			"id": "i18n-sweep-ja-JP",
+			"file": "src/lib/i18n/locales/ja-JP/translation.json",
+			"find": "Open WebUI",
+			"replace": "{{name}}"
+		},
+		{
+			"id": "i18n-sweep-ko-KR",
+			"file": "src/lib/i18n/locales/ko-KR/translation.json",
+			"find": "Open WebUI",
+			"replace": "{{name}}"
+		},
+		{
+			"id": "i18n-sweep-th-TH",
+			"file": "src/lib/i18n/locales/th-TH/translation.json",
+			"find": "Open WebUI",
+			"replace": "{{name}}"
+		},
+		{
+			"id": "i18n-sweep-id-ID",
+			"file": "src/lib/i18n/locales/id-ID/translation.json",
+			"find": "Open WebUI",
+			"replace": "{{name}}"
+		},
+		{
+			"id": "frontend-toolservers-modal-desc",
+			"file": "src/lib/components/chat/ToolServersModal.svelte",
+			"find": "Open WebUI can use tools provided by any OpenAPI server.",
+			"replace": "{{name}} can use tools provided by any OpenAPI server."
+		},
+		{
+			"id": "frontend-addtoolserver-identifies",
+			"file": "src/lib/components/AddToolServerModal.svelte",
+			"find": "in Open WebUI, separately from the OAuth client ID.",
+			"replace": "in {{name}}, separately from the OAuth client ID."
+		},
+		{
+			"id": "frontend-addtoolserver-cookies",
+			"file": "src/lib/components/AddToolServerModal.svelte",
+			"find": "Forward cookies from your Open WebUI request to this server.",
+			"replace": "Forward cookies from your {{name}} request to this server."
+		},
+		{
+			"id": "frontend-addconnection-cookies",
+			"file": "src/lib/components/AddConnectionModal.svelte",
+			"find": "Forward cookies from your Open WebUI request to this server.",
+			"replace": "Forward cookies from your {{name}} request to this server."
+		},
+		{
+			"id": "frontend-addterminalserver-cookies",
+			"file": "src/lib/components/AddTerminalServerModal.svelte",
+			"find": "Forward cookies from your Open WebUI request to this server.",
+			"replace": "Forward cookies from your {{name}} request to this server."
+		},
+		{
+			"id": "frontend-addtoolserver-mcp-banner",
+			"file": "src/lib/components/AddToolServerModal.svelte",
+			"find": "maintained by the Open WebUI team",
+			"replace": "maintained by the upstream project"
+		},
+		{
+			"id": "frontend-integrations-cors",
+			"file": "src/lib/components/chat/Settings/Integrations.svelte",
+			"find": "allow requests from Open WebUI.",
+			"replace": "allow requests from {{name}}."
+		},
+		{
+			"id": "frontend-connections-cors",
+			"file": "src/lib/components/chat/Settings/Connections.svelte",
+			"find": "allow requests from Open WebUI.",
+			"replace": "allow requests from {{name}}."
+		},
+		{
+			"id": "admin-apps-connect",
+			"file": "src/lib/components/admin/Settings/Apps.svelte",
+			"find": "Connect external apps to Open WebUI.",
+			"replace": "Connect external apps to {{name}}."
+		},
+		{
+			"id": "admin-events-names",
+			"file": "src/lib/components/admin/Settings/Events.svelte",
+			"find": "may change as Open WebUI evolves.",
+			"replace": "may change as {{name}} evolves."
+		},
+		{
+			"id": "admin-auth-restart",
+			"file": "src/lib/components/admin/Settings/Authentication.svelte",
+			"find": "Restart all Open WebUI instances",
+			"replace": "Restart all {{name}} instances"
+		},
+		{
+			"id": "admin-extknowledge-embed",
+			"file": "src/lib/components/admin/Settings/ExternalKnowledge.svelte",
+			"find": "configured in Open WebUI.",
+			"replace": "configured in {{name}}."
+		},
+		{
+			"id": "frontend-version-gate-tools-create",
+			"file": "src/routes/(app)/workspace/tools/create/+page.svelte",
+			"find": "Open WebUI version (v",
+			"replace": "{{name}} version (v"
+		},
+		{
+			"id": "frontend-version-gate-tools-edit",
+			"file": "src/routes/(app)/workspace/tools/edit/+page.svelte",
+			"find": "Open WebUI version (v",
+			"replace": "{{name}} version (v"
+		},
+		{
+			"id": "frontend-version-gate-functions-create",
+			"file": "src/routes/(app)/admin/functions/create/+page.svelte",
+			"find": "Open WebUI version (v",
+			"replace": "{{name}} version (v"
+		},
+		{
+			"id": "frontend-version-gate-functions-edit",
+			"file": "src/routes/(app)/admin/functions/edit/+page.svelte",
+			"find": "Open WebUI version (v",
+			"replace": "{{name}} version (v"
+		},
+		{
+			"id": "frontend-manifest-funding",
+			"file": "src/lib/components/workspace/common/ManifestModal.svelte",
+			"find": "Open WebUI does not take any percentage",
+			"replace": "{{name}} does not take any percentage"
+		},
+		{
+			"id": "frontend-kb-external",
+			"file": "src/lib/components/workspace/Knowledge/KnowledgeBase.svelte",
+			"find": "Open WebUI can query it",
+			"replace": "{{name}} can query it"
+		},
+		{
+			"id": "frontend-syncstats-question",
+			"file": "src/lib/components/chat/Settings/SyncStatsModal.svelte",
+			"find": "sync your usage stats with Open WebUI Community?",
+			"replace": "sync your usage stats with {{name}} Community?"
+		},
+		{
+			"id": "frontend-syncstats-desc",
+			"file": "src/lib/components/chat/Settings/SyncStatsModal.svelte",
+			"find": "improvements to Open WebUI. Your privacy",
+			"replace": "improvements to {{name}}. Your privacy"
+		},
+		{
+			"id": "frontend-syncstats-version",
+			"file": "src/lib/components/chat/Settings/SyncStatsModal.svelte",
+			"find": "t('Open WebUI version')",
+			"replace": "t('{{name}} version')"
+		},
+		{
+			"id": "frontend-syncstats-filename",
+			"file": "src/lib/components/chat/Settings/SyncStatsModal.svelte",
+			"find": "open-webui-stats-",
+			"replace": "{{slug}}-stats-"
+		},
+		{
+			"id": "backend-community-sharing-default",
+			"file": "backend/open_webui/config.py",
+			"find": "ENABLE_COMMUNITY_SHARING = os.getenv('ENABLE_COMMUNITY_SHARING', 'True').lower() == 'true'",
+			"replace": "ENABLE_COMMUNITY_SHARING = os.getenv('ENABLE_COMMUNITY_SHARING', 'False').lower() == 'true'",
+			"count": 1,
+			"flag": "hideCommunity"
+		},
+		{
+			"id": "frontend-about-copyright",
+			"file": "src/lib/components/chat/Settings/About.svelte",
+			"find": "\t\t\t\t{$i18n.t('Copyright (c)')}\n\t\t\t\t{new Date().getFullYear()}\n\t\t\t\t<a href=\"https://openwebui.com\" target=\"_blank\" class=\"underline\">Open WebUI Inc.</a>\n\t\t\t\t<a href=\"https://github.com/open-webui/open-webui/blob/main/LICENSE\" target=\"_blank\"\n\t\t\t\t\t>{$i18n.t('All rights reserved.')}</a\n\t\t\t\t>",
+			"replace": "\t\t\t\t{$i18n.t('Copyright (c)')}\n\t\t\t\t{new Date().getFullYear()}\n\t\t\t\t{{name}}. Developed by {{vendor}}.\n\t\t\t\t{$i18n.t('All rights reserved.')}"
+		},
+		{
+			"id": "frontend-about-createdby",
+			"file": "src/lib/components/chat/Settings/About.svelte",
+			"find": "\t\t\t<div class=\"text-xs text-gray-400 dark:text-gray-500\">\n\t\t\t\t{$i18n.t('Created by')}\n\t\t\t\t<a class=\"text-gray-500 dark:text-gray-400\" href=\"https://github.com/tjbck\" target=\"_blank\"\n\t\t\t\t\t>Tim J. Baek</a\n\t\t\t\t>\n\t\t\t</div>",
+			"replace": "\t\t\t<div class=\"text-xs text-gray-400 dark:text-gray-500\">\n\t\t\t\tDeveloped by {{vendor}}\n\t\t\t</div>"
+		},
+		{
+			"id": "frontend-about-socials",
+			"file": "src/lib/components/chat/Settings/About.svelte",
+			"find": "\t\t\t{:else}\n\t\t\t\t<div class=\"flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-400 dark:text-gray-600\">\n\t\t\t\t\t<a\n\t\t\t\t\t\tclass=\"hover:text-gray-700 dark:hover:text-gray-400\"\n\t\t\t\t\t\thref=\"https://discord.gg/5rJgQTnV4s\"\n\t\t\t\t\t\ttarget=\"_blank\">Discord</a\n\t\t\t\t\t>\n\t\t\t\t\t<a\n\t\t\t\t\t\tclass=\"hover:text-gray-700 dark:hover:text-gray-400\"\n\t\t\t\t\t\thref=\"https://twitter.com/OpenWebUI\"\n\t\t\t\t\t\ttarget=\"_blank\">X</a\n\t\t\t\t\t>\n\t\t\t\t\t<a\n\t\t\t\t\t\tclass=\"hover:text-gray-700 dark:hover:text-gray-400\"\n\t\t\t\t\t\thref=\"https://github.com/open-webui/open-webui\"\n\t\t\t\t\t\ttarget=\"_blank\">GitHub</a\n\t\t\t\t\t>\n\t\t\t\t</div>\n\t\t\t{/if}",
+			"replace": "\t\t\t{/if}"
+		},
+		{
+			"id": "backend-version-check-default",
+			"file": "backend/open_webui/env.py",
+			"find": "ENABLE_VERSION_UPDATE_CHECK = os.getenv('ENABLE_VERSION_UPDATE_CHECK', 'true').lower() == 'true'",
+			"replace": "ENABLE_VERSION_UPDATE_CHECK = os.getenv('ENABLE_VERSION_UPDATE_CHECK', 'false').lower() == 'true'",
+			"count": 1,
+			"flag": "patchVersionCheck"
+		},
+		{
+			"id": "backend-changelog-blurb",
+			"file": "backend/open_webui/env.py",
+			"find": "try:\n    changelog_path = BASE_DIR / 'CHANGELOG.md'\n    with open(str(changelog_path.absolute()), encoding='utf8') as file:\n        changelog_content = file.read()\n\nexcept Exception:\n    changelog_content = (pkgutil.get_data('open_webui', 'CHANGELOG.md') or b'').decode()",
+			"replace": "changelog_content = f'''## [{VERSION}] - {{name}}\n\n### {{name}}\n\n- {{name}} {VERSION} - Developed by {{vendor}}.\n- This build does not ship the upstream project changelog.\n'''",
+			"count": 1,
+			"flag": "patchChangelog"
+		},
+		{
+			"id": "frontend-onboarding-docs-link",
+			"file": "src/lib/components/OnBoarding.svelte",
+			"find": "href=\"https://docs.openwebui.com/\"",
+			"replace": "href=\"{{website}}\""
+		},
+		{
+			"id": "admin-general-docs-link",
+			"file": "src/lib/components/admin/Settings/General.svelte",
+			"find": "href=\"https://docs.openwebui.com/\"",
+			"replace": "href=\"{{website}}\""
+		},
+		{
+			"id": "admin-auth-docs-api-link",
+			"file": "src/lib/components/admin/Settings/Authentication.svelte",
+			"find": "href=\"https://docs.openwebui.com/reference/api-endpoints\"",
+			"replace": "href=\"{{website}}\""
+		},
+		{
+			"id": "admin-auth-docs-jwt-link",
+			"file": "src/lib/components/admin/Settings/Authentication.svelte",
+			"find": "href=\"https://docs.openwebui.com/reference/env-configuration#jwt_expires_in\"",
+			"replace": "href=\"{{website}}\""
+		},
+		{
+			"id": "admin-general-socials",
+			"file": "src/lib/components/admin/Settings/General.svelte",
+			"find": "\t\t\t\t\t<div class=\"mt-1 flex flex-wrap gap-x-3 gap-y-1 text-gray-400 dark:text-gray-600\">\n\t\t\t\t\t\t<a\n\t\t\t\t\t\t\tclass=\"hover:text-gray-700 dark:hover:text-gray-300\"\n\t\t\t\t\t\t\thref=\"https://discord.gg/5rJgQTnV4s\"\n\t\t\t\t\t\t\ttarget=\"_blank\">Discord</a\n\t\t\t\t\t\t>\n\t\t\t\t\t\t<a\n\t\t\t\t\t\t\tclass=\"hover:text-gray-700 dark:hover:text-gray-300\"\n\t\t\t\t\t\t\thref=\"https://twitter.com/OpenWebUI\"\n\t\t\t\t\t\t\ttarget=\"_blank\">X</a\n\t\t\t\t\t\t>\n\t\t\t\t\t\t<a\n\t\t\t\t\t\t\tclass=\"hover:text-gray-700 dark:hover:text-gray-300\"\n\t\t\t\t\t\t\thref=\"https://github.com/open-webui/open-webui\"\n\t\t\t\t\t\t\ttarget=\"_blank\">GitHub</a\n\t\t\t\t\t\t>\n\t\t\t\t\t</div>",
+			"replace": ""
+		},
+		{
+			"id": "admin-general-license-upsell",
+			"file": "src/lib/components/admin/Settings/General.svelte",
+			"find": "\t\t\t\t\t{:else}\n\t\t\t\t\t\t<a\n\t\t\t\t\t\t\tclass=\"mt-0.5 block text-gray-400 transition-colors hover:text-gray-700 dark:text-gray-600 dark:hover:text-gray-300\"\n\t\t\t\t\t\t\thref=\"https://docs.openwebui.com/enterprise\"\n\t\t\t\t\t\t\ttarget=\"_blank\"\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t{$i18n.t(\n\t\t\t\t\t\t\t\t'Upgrade to a licensed plan for enhanced capabilities, including custom theming and branding, and dedicated support.'\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t</a>\n\t\t\t\t\t{/if}",
+			"replace": "\t\t\t\t\t{/if}"
+		},
+		{
+			"id": "admin-connections-help-link",
+			"file": "src/lib/components/admin/Settings/Connections.svelte",
+			"find": "\t\t\t\t\t\t\t<a\n\t\t\t\t\t\t\t\tclass=\"font-normal underline hover:text-gray-700 dark:hover:text-gray-300\"\n\t\t\t\t\t\t\t\thref=\"https://github.com/open-webui/open-webui#troubleshooting\"\n\t\t\t\t\t\t\t\ttarget=\"_blank\"\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t{$i18n.t('Click here for help.')}\n\t\t\t\t\t\t\t</a>",
+			"replace": "\t\t\t\t\t\t\t{$i18n.t('Click here for help.')}"
+		},
+		{
+			"id": "personal-integrations-openapi-link",
+			"file": "src/lib/components/chat/Settings/Integrations.svelte",
+			"find": "\t\t\t\t\t<a\n\t\t\t\t\t\tclass=\"mt-2 inline-block text-[0.6875rem] text-gray-500 underline decoration-gray-300 underline-offset-4 hover:text-gray-700 dark:text-gray-500 dark:decoration-gray-700 dark:hover:text-gray-300\"\n\t\t\t\t\t\thref=\"https://github.com/open-webui/openapi-servers\"\n\t\t\t\t\t\ttarget=\"_blank\"\n\t\t\t\t\t\trel=\"noopener noreferrer\">{$i18n.t('Learn more about OpenAPI tool servers.')} \u2197</a\n\t\t\t\t\t>",
+			"replace": ""
+		},
+		{
+			"id": "terminals-open-terminal-link",
+			"file": "src/lib/components/chat/Settings/Integrations/Terminals.svelte",
+			"find": "\t<a\n\t\tclass=\"mt-2 inline-block text-[0.6875rem] text-gray-500 underline decoration-gray-300 underline-offset-4 hover:text-gray-700 dark:text-gray-500 dark:decoration-gray-700 dark:hover:text-gray-300\"\n\t\thref=\"https://github.com/open-webui/open-terminal\"\n\t\ttarget=\"_blank\"\n\t\trel=\"noopener noreferrer\">{$i18n.t('Learn more about Open Terminal')} \u2197</a\n\t>",
+			"replace": ""
+		},
+		{
+			"id": "admin-integrations-open-terminal-link",
+			"file": "src/lib/components/admin/Settings/Integrations.svelte",
+			"find": "\t\t\t\t\t\t<a\n\t\t\t\t\t\t\tclass=\"mt-0.5 block text-[0.6875rem] text-gray-500 underline hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300\"\n\t\t\t\t\t\t\thref=\"https://github.com/open-webui/open-terminal\"\n\t\t\t\t\t\t\ttarget=\"_blank\">{$i18n.t('Learn more about Open Terminal')} \u2197</a\n\t\t\t\t\t\t>",
+			"replace": ""
+		},
+		{
+			"id": "error-page-upstream-links",
+			"file": "src/routes/error/+page.svelte",
+			"find": "\t\t\t\t\t\t<a\n\t\t\t\t\t\t\tclass=\" font-normal underline\"\n\t\t\t\t\t\t\thref=\"https://github.com/open-webui/open-webui#how-to-install-\"\n\t\t\t\t\t\t\ttarget=\"_blank\">{$i18n.t('See readme.md for instructions')}</a\n\t\t\t\t\t\t>\n\t\t\t\t\t\t{$i18n.t('or')}\n\t\t\t\t\t\t<a class=\" font-normal underline\" href=\"https://discord.gg/5rJgQTnV4s\" target=\"_blank\"\n\t\t\t\t\t\t\t>{$i18n.t('join our Discord for help.')}</a\n\t\t\t\t\t\t>",
+			"replace": ""
+		},
+		{
+			"id": "usermenu-docs-link",
+			"file": "src/lib/components/layout/Sidebar/UserMenu.svelte",
+			"find": "href=\"https://docs.openwebui.com\"",
+			"replace": "href=\"{{website}}\""
+		},
+		{
+			"id": "usermenu-releases-item",
+			"file": "src/lib/components/layout/Sidebar/UserMenu.svelte",
+			"find": "\t\t\t\t\t<!-- Releases -->\n\t\t\t\t\t<a\n\t\t\t\t\t\trole=\"menuitem\"\n\t\t\t\t\t\thref=\"https://github.com/open-webui/open-webui/releases\"\n\t\t\t\t\t\ttarget=\"_blank\"\n\t\t\t\t\t\tdraggable=\"false\"\n\t\t\t\t\t\tclass=\"flex h-[1.6875rem] items-center gap-2 rounded-xl px-2 text-[0.8125rem] w-full hover:bg-gray-50/60 dark:hover:bg-gray-800/60 transition cursor-pointer select-none\"\n\t\t\t\t\t\tid=\"chat-share-button\"\n\t\t\t\t\t\ton:click={() => {\n\t\t\t\t\t\t\tshow = false;\n\t\t\t\t\t\t}}\n\t\t\t\t\t>\n\t\t\t\t\t\t<div class=\"self-center\">\n\t\t\t\t\t\t\t<MapIcon className=\"size-3.5\" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\" self-center truncate\">{$i18n.t('Releases')}</div>\n\t\t\t\t\t</a>",
+			"replace": ""
+		},
+		{
+			"id": "toolservers-modal-openapi-link",
+			"file": "src/lib/components/chat/ToolServersModal.svelte",
+			"find": " <br /><a\n\t\t\t\t\t\tclass=\"underline\"\n\t\t\t\t\t\thref=\"https://github.com/open-webui/openapi-servers\"\n\t\t\t\t\t\ttarget=\"_blank\">{$i18n.t('Learn more about OpenAPI tool servers.')}</a\n\t\t\t\t\t>",
+			"replace": ""
+		},
+		{
+			"id": "frontend-functioneditor-author",
+			"file": "src/lib/components/admin/Functions/FunctionEditor.svelte",
+			"find": "author: open-webui",
+			"replace": "author: {{vendor}}"
+		},
+		{
+			"id": "frontend-functioneditor-author-url",
+			"file": "src/lib/components/admin/Functions/FunctionEditor.svelte",
+			"find": "author_url: https://github.com/open-webui",
+			"replace": "author_url: {{website}}"
+		},
+		{
+			"id": "frontend-functioneditor-funding-url",
+			"file": "src/lib/components/admin/Functions/FunctionEditor.svelte",
+			"find": "funding_url: https://github.com/open-webui",
+			"replace": "funding_url: {{website}}"
+		},
+		{
+			"id": "backend-memory-prompt",
+			"file": "backend/open_webui/utils/memory.py",
+			"find": "You are Open WebUI's private memory reviewer",
+			"replace": "You are {{name}}'s private memory reviewer"
+		},
+		{
+			"id": "backend-skills-standards",
+			"file": "backend/open_webui/utils/skills.py",
+			"find": "Follow the Open WebUI skill-authoring standards:",
+			"replace": "Follow the {{name}} skill-authoring standards:"
+		},
+		{
+			"id": "backend-skills-create-hint",
+			"file": "backend/open_webui/utils/skills.py",
+			"find": "create a reusable Open WebUI skill",
+			"replace": "create a reusable {{name}} skill"
+		},
+		{
+			"id": "backend-pgvector-error",
+			"file": "backend/open_webui/retrieval/vector/dbs/pgvector.py",
+			"find": "before restarting Open WebUI.",
+			"replace": "before restarting {{name}}."
+		},
+		{
+			"id": "backend-openapi-docstring-models",
+			"file": "backend/open_webui/main.py",
+			"find": "All models configured in Open WebUI are accessible",
+			"replace": "All models configured in {{name}} are accessible"
+		},
+		{
+			"id": "backend-openapi-docstring-usage",
+			"file": "backend/open_webui/main.py",
+			"find": "Get current usage statistics for Open WebUI.",
+			"replace": "Get current usage statistics for {{name}}."
+		},
+		{
+			"id": "frontend-translate-cta-remove",
+			"file": "src/lib/components/chat/Settings/General.svelte",
+			"find": "\t\t\t{#if $i18n.language === 'en-US' && !($config?.license_metadata ?? false)}\n\t\t\t\t<div class=\"-mt-1 text-[0.6875rem] text-gray-400 dark:text-gray-600\">\n\t\t\t\t\t{$i18n.t(\"Couldn't find your language?\")}\n\t\t\t\t\t<a\n\t\t\t\t\t\tclass=\"font-normal underline text-gray-400 dark:text-gray-600\"\n\t\t\t\t\t\thref=\"https://github.com/open-webui/open-webui/blob/main/docs/CONTRIBUTING.md#-translations-and-internationalization\"\n\t\t\t\t\t\ttarget=\"_blank\"\n\t\t\t\t\t>\n\t\t\t\t\t\t<!-- LICENSE covers this Open WebUI wordmark.\n\t\t\t\t\t\tDo not alter, remove, obscure, or replace it except as LICENSE permits:\n\t\t\t\t\t\thttps://docs.openwebui.com/license. -->\n\t\t\t\t\t\t{$i18n.t('Help us translate Open WebUI!')}\n\t\t\t\t\t</a>\n\t\t\t\t</div>\n\t\t\t{/if}\n",
+			"replace": "<!-- branding: upstream link removed -->\n"
+		},
+		{
+			"id": "admin-userlist-license-banner",
+			"file": "src/lib/components/admin/Users/UserList.svelte",
+			"find": "\t{#if total > 50}\n\t\t<!-- LICENSE covers the Open WebUI branding narrative here.\n\t\tDo not alter, remove, obscure, or replace it except as LICENSE permits:\n\t\thttps://docs.openwebui.com/license. -->\n\t\t<div class=\"mt-3 mb-3 pb-1 text-gray-700 dark:text-gray-300\">\n\t\t\t<div class=\"max-w-3xl text-xs leading-5\">\n\t\t\t\t<div class=\"text-gray-900 dark:text-gray-100\">\n\t\t\t\t\t<!-- LICENSE covers this Open WebUI wordmark.\n\t\t\t\t\tDo not alter, remove, obscure, or replace it except as LICENSE permits:\n\t\t\t\t\thttps://docs.openwebui.com/license. -->\n\t\t\t\t\t{$i18n.t('Running Open WebUI for a team?')}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"mt-2 space-y-2\">\n\t\t\t\t\t<p>\n\t\t\t\t\t\t<!-- LICENSE covers this Open WebUI branding copy.\n\t\t\t\t\t\tDo not alter, remove, obscure, or replace it except as LICENSE permits:\n\t\t\t\t\t\thttps://docs.openwebui.com/license. -->\n\t\t\t\t\t\t{$i18n.t(\n\t\t\t\t\t\t\t'You have more than 50 users, which often means this workspace is supporting organizational use. Open WebUI is free to use as-is, with no restrictions or hidden limits, and we want to keep it that way.'\n\t\t\t\t\t\t)}\n\t\t\t\t\t</p>\n\t\t\t\t\t<p class=\"text-gray-500 dark:text-gray-400\">\n\t\t\t\t\t\t<!-- LICENSE covers this Open WebUI branding copy.\n\t\t\t\t\t\tDo not alter, remove, obscure, or replace it except as LICENSE permits:\n\t\t\t\t\t\thttps://docs.openwebui.com/license. -->\n\t\t\t\t\t\t{$i18n.t(\n\t\t\t\t\t\t\t'By supporting the project through sponsorship or an enterprise license, you help us stay independent, ship new features faster, improve stability, and grow Open WebUI for the long haul.'\n\t\t\t\t\t\t)}\n\t\t\t\t\t</p>\n\t\t\t\t\t<p class=\"text-gray-500 dark:text-gray-400\">\n\t\t\t\t\t\t{$i18n.t(\n\t\t\t\t\t\t\t'Enterprise licenses also include dedicated support, customization options, and more, at a fraction of the cost of building and maintaining this stack internally.'\n\t\t\t\t\t\t)}\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"mt-2 flex items-center gap-3\">\n\t\t\t\t\t<a\n\t\t\t\t\t\tclass=\"text-xs text-gray-700 underline transition hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100\"\n\t\t\t\t\t\thref=\"https://docs.openwebui.com/enterprise\"\n\t\t\t\t\t\ttarget=\"_blank\"\n\t\t\t\t\t\trel=\"noreferrer\"\n\t\t\t\t\t>\n\t\t\t\t\t\t{$i18n.t('Enterprise licensing')}\n\t\t\t\t\t</a>\n\t\t\t\t\t<a\n\t\t\t\t\t\tclass=\"text-xs text-gray-500 underline transition hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-100\"\n\t\t\t\t\t\thref=\"https://github.com/sponsors/open-webui\"\n\t\t\t\t\t\ttarget=\"_blank\"\n\t\t\t\t\t\trel=\"noreferrer\"\n\t\t\t\t\t>\n\t\t\t\t\t\t{$i18n.t('Sponsor on GitHub')}\n\t\t\t\t\t</a>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t{/if}\n",
+			"replace": "<!-- branding: upstream link removed -->\n"
+		},
+		{
+			"id": "frontend-share-toast-models",
+			"file": "src/lib/components/workspace/Models.svelte",
+			"find": "Redirecting you to Open WebUI Community",
+			"replace": "Redirecting you to the community site"
+		},
+		{
+			"id": "frontend-share-toast-prompts",
+			"file": "src/lib/components/workspace/Prompts.svelte",
+			"find": "Redirecting you to Open WebUI Community",
+			"replace": "Redirecting you to the community site"
+		},
+		{
+			"id": "frontend-share-toast-tools",
+			"file": "src/lib/components/workspace/Tools.svelte",
+			"find": "Redirecting you to Open WebUI Community",
+			"replace": "Redirecting you to the community site"
+		},
+		{
+			"id": "frontend-share-toast-skills-sharechat",
+			"file": "src/lib/components/chat/ShareChatModal.svelte",
+			"find": "Redirecting you to Open WebUI Community",
+			"replace": "Redirecting you to the community site"
+		},
+		{
+			"id": "frontend-share-toast-admin-functions",
+			"file": "src/lib/components/admin/Functions.svelte",
+			"find": "Redirecting you to Open WebUI Community",
+			"replace": "Redirecting you to the community site"
+		},
+		{
+			"id": "frontend-share-toast-feedbacks",
+			"file": "src/lib/components/admin/Evaluations/Feedbacks.svelte",
+			"find": "Redirecting you to Open WebUI Community",
+			"replace": "Redirecting you to the community site"
+		},
+		{
+			"id": "frontend-sharechat-button",
+			"file": "src/lib/components/chat/ShareChatModal.svelte",
+			"find": "Share to Open WebUI Community",
+			"replace": "Share to the community site"
+		},
+		{
+			"id": "frontend-discover-footer",
+			"file": "src/lib/components/workspace/common/CommunityDiscover.svelte",
+			"find": "Made by Open WebUI Community",
+			"replace": "Made by the community"
+		},
+		{
+			"id": "frontend-configs-doc-comment",
+			"file": "src/lib/apis/configs/index.ts",
+			"find": "Proxied through the Open WebUI backend",
+			"replace": "Proxied through the {{name}} backend"
 		}
 	],
 	"assets": [
@@ -399,22 +825,34 @@
 		{
 			"src": "favicon.svg",
 			"required": true,
-			"dests": ["static/static/favicon.svg", "backend/open_webui/static/favicon.svg"]
+			"dests": [
+				"static/static/favicon.svg",
+				"backend/open_webui/static/favicon.svg"
+			]
 		},
 		{
 			"src": "favicon-96x96.png",
 			"required": true,
-			"dests": ["static/static/favicon-96x96.png", "backend/open_webui/static/favicon-96x96.png"]
+			"dests": [
+				"static/static/favicon-96x96.png",
+				"backend/open_webui/static/favicon-96x96.png"
+			]
 		},
 		{
 			"src": "favicon.ico",
 			"required": true,
-			"dests": ["static/static/favicon.ico", "backend/open_webui/static/favicon.ico"]
+			"dests": [
+				"static/static/favicon.ico",
+				"backend/open_webui/static/favicon.ico"
+			]
 		},
 		{
 			"src": "apple-touch-icon.png",
 			"required": true,
-			"dests": ["static/static/apple-touch-icon.png", "backend/open_webui/static/apple-touch-icon.png"]
+			"dests": [
+				"static/static/apple-touch-icon.png",
+				"backend/open_webui/static/apple-touch-icon.png"
+			]
 		},
 		{
 			"src": "web-app-manifest-192x192.png",
@@ -435,33 +873,50 @@
 		{
 			"src": "logo.png",
 			"required": true,
-			"dests": ["static/static/logo.png", "backend/open_webui/static/logo.png"]
+			"dests": [
+				"static/static/logo.png",
+				"backend/open_webui/static/logo.png"
+			]
 		},
 		{
 			"src": "splash.png",
 			"required": true,
-			"dests": ["static/static/splash.png", "backend/open_webui/static/splash.png"]
+			"dests": [
+				"static/static/splash.png",
+				"backend/open_webui/static/splash.png"
+			]
 		},
 		{
 			"src": "splash-dark.png",
 			"required": true,
-			"dests": ["static/static/splash-dark.png", "backend/open_webui/static/splash-dark.png"]
+			"dests": [
+				"static/static/splash-dark.png",
+				"backend/open_webui/static/splash-dark.png"
+			]
 		},
 		{
 			"src": "custom.css",
 			"required": true,
-			"dests": ["static/static/custom.css", "backend/open_webui/static/custom.css"]
+			"dests": [
+				"static/static/custom.css",
+				"backend/open_webui/static/custom.css"
+			]
 		},
 		{
 			"src": "loader.js",
 			"required": true,
-			"dests": ["static/static/loader.js", "backend/open_webui/static/loader.js"]
+			"dests": [
+				"static/static/loader.js",
+				"backend/open_webui/static/loader.js"
+			]
 		},
 		{
 			"src": "swagger-favicon.png",
 			"required": true,
 			"flag": "patchSwaggerFavicon",
-			"dests": ["backend/open_webui/static/swagger-ui/favicon.png"]
+			"dests": [
+				"backend/open_webui/static/swagger-ui/favicon.png"
+			]
 		}
 	]
 }

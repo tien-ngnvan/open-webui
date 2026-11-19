@@ -15,6 +15,7 @@ upstream luôn merge sạch, không conflict.
 | `brand.json` | Nguồn sự thật duy nhất: tên, slug, website, màu, feature flags |
 | `patches.json` | Bảng patch: `{file, find, replace, count, unless, flag}` + danh sách asset copies |
 | `apply-branding.mjs` | Engine (Node stdlib, không dependency). Modes: `--apply` `--check` `--report` `--restore` |
+| `locales.json` | Keep-list ngôn ngữ UI (`{"keep": [...]}`) — `apply` xóa locale + lọc `languages.json`, `restore` khôi phục; ngôn ngữ mới của upstream ngoài keep-list tự bị loại khi sync |
 | `assets/` | Bộ assets đủ kích thước (generate từ logo nguồn, được commit) |
 | `tools/generate-assets.mjs` | sharp pipeline tạo assets từ 1 logo nguồn (npm install cục bộ) |
 | `i18n-overrides.json` | Override bản dịch runtime (nhập qua Admin → Settings → General → UI Translations) |

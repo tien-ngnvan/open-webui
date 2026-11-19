@@ -208,30 +208,14 @@
 
 						<a
 							class="shrink-0 text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-500 dark:hover:text-white"
-							href="https://docs.openwebui.com/"
+							href="https://hangtho.net"
 							target="_blank"
 						>
 							{$i18n.t('Documentation')}
 						</a>
 					</div>
 
-					<div class="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-gray-400 dark:text-gray-600">
-						<a
-							class="hover:text-gray-700 dark:hover:text-gray-300"
-							href="https://discord.gg/5rJgQTnV4s"
-							target="_blank">Discord</a
-						>
-						<a
-							class="hover:text-gray-700 dark:hover:text-gray-300"
-							href="https://twitter.com/OpenWebUI"
-							target="_blank">X</a
-						>
-						<a
-							class="hover:text-gray-700 dark:hover:text-gray-300"
-							href="https://github.com/open-webui/open-webui"
-							target="_blank">GitHub</a
-						>
-					</div>
+
 				</div>
 
 				<div class="text-xs">
@@ -265,16 +249,6 @@
 								{@html DOMPurify.sanitize($config?.license_metadata?.html)}
 							</div>
 						{/if}
-					{:else}
-						<a
-							class="mt-0.5 block text-gray-400 transition-colors hover:text-gray-700 dark:text-gray-600 dark:hover:text-gray-300"
-							href="https://docs.openwebui.com/enterprise"
-							target="_blank"
-						>
-							{$i18n.t(
-								'Upgrade to a licensed plan for enhanced capabilities, including custom theming and branding, and dedicated support.'
-							)}
-						</a>
 					{/if}
 				</div>
 			</AdminSettingSection>

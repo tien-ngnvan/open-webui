@@ -33,6 +33,18 @@ if (!['--apply', '--check', '--report', '--restore'].includes(mode)) {
 const brand = JSON.parse(fs.readFileSync(path.join(SCRIPT_DIR, 'brand.json'), 'utf8'));
 const config = JSON.parse(fs.readFileSync(path.join(SCRIPT_DIR, 'patches.json'), 'utf8'));
 
+// Optional locale prune config — missing file disables the step entirely.
+let localePrune = null;
+try {
+	localePrune = JSON.parse(fs.readFileSync(path.join(SCRIPT_DIR, 'locales.json'), 'utf8'));
+	if (!Array.isArray(localePrune.keep)) {
+		console.error('branding/locales.json must be {"keep": ["<locale-code>", ...]}');
+		process.exit(2);
+	}
+} catch (e) {
+	if (e.code !== 'ENOENT') throw e;
+}
+
 const WRITE = mode === '--apply';
 
 function interpolate(value) {
@@ -121,7 +133,8 @@ for (const [file, patches] of byFile) {
 			content = next;
 			changed = true;
 			results.push({ patch: p, status: 'APPLIED', detail: `${findCount} occurrence(s)`, file });
-		} else if (replaceCount > 0) {
+		} else if (replaceCount > 0 || p.replace === '') {
+			// replace === '' marks a removal patch: the find being gone means applied.
 			results.push({ patch: p, status: 'NOOP', detail: 'already applied', file });
 		} else {
 			results.push({ patch: p, status: 'DRIFT', detail: 'anchor not found', file });
@@ -176,6 +189,48 @@ for (const entry of config.assets ?? []) {
 	}
 }
 
+// ---------- locales ----------
+
+// Prune UI languages to the keep-list in locales.json: filter
+// locales/languages.json and delete locale directories. Upstream languages not
+// in the keep-list are removed automatically, so new upstream entries stay
+// pruned across syncs. --restore brings every tracked locale back via git.
+const localeResults = [];
+const LOCALES_DIR = 'src/lib/i18n/locales';
+
+if (localePrune) {
+	touchedFiles.push(LOCALES_DIR, `${LOCALES_DIR}/languages.json`);
+	const keep = new Set(localePrune.keep);
+	const languagesRaw = fs.readFileSync(path.join(ROOT, LOCALES_DIR, 'languages.json'), 'utf8');
+	const upstream = JSON.parse(languagesRaw);
+
+	const upstreamCodes = new Set(upstream.map(({ code }) => code));
+	for (const code of keep) {
+		if (!upstreamCodes.has(code)) {
+			localeResults.push({ code, status: 'DRIFT', detail: 'keep-list entry missing upstream' });
+		}
+	}
+
+	const kept = upstream.filter(({ code }) => keep.has(code));
+	const serialized = JSON.stringify(kept, null, '\t') + '\n';
+	if (serialized !== languagesRaw) {
+		localeResults.push({
+			code: 'languages.json',
+			status: 'RM',
+			detail: `${upstream.length - kept.length} entr(y/ies) ${WRITE ? 'removed' : 'would remove'}`
+		});
+		if (WRITE) fs.writeFileSync(path.join(ROOT, LOCALES_DIR, 'languages.json'), serialized);
+	} else {
+		localeResults.push({ code: 'languages.json', status: 'NOOP', detail: 'already pruned' });
+	}
+
+	for (const entry of fs.readdirSync(path.join(ROOT, LOCALES_DIR), { withFileTypes: true })) {
+		if (!entry.isDirectory() || keep.has(entry.name)) continue;
+		localeResults.push({ code: entry.name, status: 'RM', detail: WRITE ? 'removed' : 'would remove' });
+		if (WRITE) fs.rmSync(path.join(ROOT, LOCALES_DIR, entry.name), { recursive: true, force: true });
+	}
+}
+
 // ---------- output ----------
 
 if (mode !== '--restore') {
@@ -190,6 +245,9 @@ if (mode !== '--restore') {
 			`  [${pad(r.status, 6)}] ${pad(`asset:${r.entry.src}`, 38)} ${r.dest ?? '(all dests)'} — ${r.detail}`
 		);
 	}
+	for (const r of localeResults) {
+		console.log(`  [${pad(r.status, 6)}] ${pad(`locale:${r.code}`, 38)} ${LOCALES_DIR}/${r.code} — ${r.detail}`);
+	}
 
 	const count = (arr, status) => arr.filter((r) => r.status === status).length;
 	const summary = {
@@ -199,18 +257,28 @@ if (mode !== '--restore') {
 		drift: count(results, 'DRIFT'),
 		error: count(results, 'ERROR') + count(assetResults, 'ERROR')
 	};
+	const locales = {
+		kept: localePrune ? JSON.parse(fs.readFileSync(path.join(ROOT, LOCALES_DIR, 'languages.json'), 'utf8')).length : 0,
+		pending: count(localeResults, 'RM'),
+		drift: count(localeResults, 'DRIFT')
+	};
 
 	console.log(
 		`\npatches/assets: applied=${summary.applied} noop=${summary.noop} skip=${summary.skip} drift=${summary.drift} error=${summary.error}`
 	);
+	if (localePrune) {
+		console.log(
+			`locales: kept=${locales.kept} ${locales.pending > 0 ? `${WRITE ? 'removed' : 'pending-removal'}=${locales.pending}` : 'pruned'}${locales.drift > 0 ? ` drift=${locales.drift}` : ''}`
+		);
+	}
 
 	let exit = 0;
-	if (summary.drift > 0 || summary.error > 0) {
+	if (summary.drift > 0 || summary.error > 0 || locales.drift > 0) {
 		exit = 1;
 		console.error(`result: FAILED — update branding/patches.json to match upstream, then re-run.`);
-	} else if (mode === '--check' && summary.applied > 0) {
+	} else if (mode === '--check' && (summary.applied > 0 || locales.pending > 0)) {
 		exit = 1;
-		console.error(`result: NOT BRANDED — ${summary.applied} entry(ies) still pending; run with --apply.`);
+		console.error(`result: NOT BRANDED — ${summary.applied + locales.pending} entry(ies) still pending; run with --apply.`);
 	} else {
 		console.log(`result: OK`);
 	}
